@@ -1,4 +1,4 @@
-package me.shaikhrayeesahmed.services;
+package me.shaikhrayeesahmed.springpetclinic.services;
 
 import me.shaikhrayeesahmed.springpetclinic.model.Vet;
 
