@@ -1,6 +1,7 @@
 package me.shaikhrayeesahmed.springpetclinic.bootstrap;
 
 import me.shaikhrayeesahmed.springpetclinic.model.Owner;
+import me.shaikhrayeesahmed.springpetclinic.model.Pet;
 import me.shaikhrayeesahmed.springpetclinic.model.PetType;
 import me.shaikhrayeesahmed.springpetclinic.model.Vet;
 import me.shaikhrayeesahmed.springpetclinic.services.OwnerService;
@@ -40,12 +41,32 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("weston");
+        owner1.setTelephone("123");
+        owner1.setAddrress("btm banglore");
+        owner1.setCity("bengaluru");
+
+        Pet pet1 = new Pet();
+        pet1.setPetType(dog);
+        pet1.setName("Dicky");
+        pet1.setOwner(owner1);
+
+        owner1.getPets().add(pet1);
 
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glanne");
+        owner2.setTelephone("123");
+        owner2.setAddrress("btm banglore");
+        owner2.setCity("bengaluru");
+
+        Pet pet2 = new Pet();
+        pet2.setPetType(cat);
+        pet2.setName("Chicky");
+        pet2.setOwner(owner2);
+
+        owner1.getPets().add(pet2);
 
         ownerService.save(owner2);
 
