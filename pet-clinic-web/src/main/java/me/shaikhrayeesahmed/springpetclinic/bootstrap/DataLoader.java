@@ -1,13 +1,12 @@
 package me.shaikhrayeesahmed.springpetclinic.bootstrap;
 
 import me.shaikhrayeesahmed.springpetclinic.model.*;
-import me.shaikhrayeesahmed.springpetclinic.services.OwnerService;
-import me.shaikhrayeesahmed.springpetclinic.services.PetTypeService;
-import me.shaikhrayeesahmed.springpetclinic.services.SpaciatiltyService;
-import me.shaikhrayeesahmed.springpetclinic.services.VetService;
+import me.shaikhrayeesahmed.springpetclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -16,13 +15,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpaciatiltyService spaciatiltyService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpaciatiltyService spaciatiltyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpaciatiltyService spaciatiltyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.spaciatiltyService = spaciatiltyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -79,6 +80,12 @@ public class DataLoader implements CommandLineRunner {
         owner1.getPets().add(pet2);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(pet2);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("snizi kitty.");
+
 
         System.out.println("Loaded Owners...");
 
