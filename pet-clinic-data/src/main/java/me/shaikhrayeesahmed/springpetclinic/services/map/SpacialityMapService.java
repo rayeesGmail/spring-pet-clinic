@@ -2,11 +2,13 @@ package me.shaikhrayeesahmed.springpetclinic.services.map;
 
 import me.shaikhrayeesahmed.springpetclinic.model.Speciality;
 import me.shaikhrayeesahmed.springpetclinic.services.SpaciatiltyService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class SpacialityMapService extends AbstractMapService<Speciality, Long> implements SpaciatiltyService {
 
     @Override
